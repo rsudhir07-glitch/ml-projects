@@ -1,11 +1,11 @@
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import StratifiedKFold
 from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 
-def trained_model(data):
+def train_model(data):
     X = data.drop(columns = ['Response'])
     y = data['Response']
+
     X_train , X_test , y_train , y_test = train_test_split(
        X , y,
        test_size= 0.3,
@@ -20,9 +20,9 @@ def trained_model(data):
     # now we will define hyperparameters
 
     params = {
-        'n_estimators' : [100 , 200 , 50],
-        'max_depth' : [3 , 5],
-        'learning_rate' : [0.1 , 0.05],
+        'n_estimators' : [100 , 200 , 300],
+        'max_depth' : [3 , 5 , 4, 6],
+        'learning_rate' : [0.1 , 0.05 , 0.1],
         'subsample' : [0.5 , 0.8],
         'colsample_bytree' : [0.5 , 0.8]
   
@@ -40,7 +40,8 @@ def trained_model(data):
         param_grid=params,
         cv = cv,
         n_jobs =-1,
-        scoring = 'f1'
+        scoring = 'f1',
+        verbose=1
     )
 
     grid.fit(X_train , y_train)

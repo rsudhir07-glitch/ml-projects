@@ -1,3 +1,17 @@
-from src.train import trained_model
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix        
 
-trained_model = trained_model()
+)
+
+def evaluate_model(best_model , X_test , y_test ):
+    y_pred = best_model.predict(X_test)
+
+    print("Accuracy :", accuracy_score(y_test, y_pred))
+    print("Precision:", precision_score(y_test, y_pred))
+    print("Recall   :", recall_score(y_test, y_pred))
+    print("F1 Score :", f1_score(y_test, y_pred))
+    print(confusion_matrix(y_test, y_pred))
