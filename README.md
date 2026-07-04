@@ -11,8 +11,8 @@ This repository showcases practical implementations of machine learning algorith
 ```
 ml-projects/
 │
+├── marketing-campaignModel/
 ├── SalaryModel/
-├── TitanicModel/
 └── README.md
 ```
 
@@ -29,7 +29,7 @@ Each project follows a structured pipeline:
 3. Exploratory Data Analysis (EDA)
 4. Feature Engineering
 5. Train-Test Split
-6. Feature Scaling (when required)
+6. Feature Scaling (If required)
 7. Model Training
 8. Model Evaluation
 9. Prediction
